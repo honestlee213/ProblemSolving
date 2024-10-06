@@ -1,11 +1,11 @@
 #include <iostream>
 using namespace std;
 
-int is_prime(int a) {
+bool is_prime(int a) {
     for (int i = 2; i <= a / 2; i++)
         if (a % i == 0)
-            return 0;
-    return 1;
+            return false;
+    return true;
 }
 
 int main() {
@@ -17,7 +17,7 @@ int main() {
     cin >> n;
 
     for (int i = m; i <= n; i++) {
-        if (i > 1 && is_prime(i) == 1) {
+        if (i > 1 && is_prime(i)) {
             sum += i;
             if (i <= min)
                 min = i;
