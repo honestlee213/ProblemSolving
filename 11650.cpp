@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
-// #include <algorithm>
+#include <map>
+#include <algorithm>
 using namespace std;
 
 
@@ -9,29 +10,30 @@ int main() {
     ios::sync_with_stdio(false);
     cin.tie(0);
 
-    vector<int> count(1);
-    int max = 1;
-
     int n;
     cin >> n;
 
+    map<int, vector<int> > table;
+
     for (int i = 0; i < n; i++) {
-        int num;
-        cin >> num;
+        int a, b;
+        cin >> a >> b;
         
-        if (num > max) {
-            count.insert(count.end(), num - max, 0);
-            count[num - 1]++;
-            max = num;
+        if (table.find(a) == table.end()) {
+            vector<int> y;
+            y.push_back(b);
+            table[a] = y;
         } else {
-            count[num - 1]++;
+            table[a].push_back(b);
         }
     }
 
-    for (int i = 0; i < count.size(); i++)
-        if (count[i] != 0)
-            for (int j = 0; j < count[i]; j++)
-                cout << i + 1 << '\n';
+    for (auto it : table) {
+        sort(it.second.begin(), it.second.end());
+        for (auto y : it.second) {
+            cout << it.first << " " << y << "\n";
+        }
+    }
 
     return 0;
 }
