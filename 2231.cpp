@@ -14,6 +14,10 @@ using namespace std;
 // }
 
 int main() {
+    // 마법의 주문
+    ios::sync_with_stdio(false);
+    cin.tie(0);
+
     int n;
     int ans = 0;
 
