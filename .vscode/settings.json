@@ -19,6 +19,11 @@
         "string_view": "cpp",
         "unordered_map": "cpp",
         "cmath": "cpp",
-        "algorithm": "cpp"
+        "algorithm": "cpp",
+        "optional": "cpp",
+        "queue": "cpp",
+        "set": "cpp",
+        "stack": "cpp",
+        "variant": "cpp"
     }
 }
