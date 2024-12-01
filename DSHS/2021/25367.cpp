@@ -34,12 +34,9 @@ int main() {
             int sm_nxt = (int)(x & 1);
             int xr_nxt = (int)(y & 1);
 
-            if (!up)
-                if (xr == 0 && sm_nxt != xr_nxt)
-                    up = true;
-            if (up)
-                if (xr == 0 && sm_nxt == xr_nxt)
-                    up = false;
+            if (xr == 0)
+                if ((!up && sm_nxt != xr_nxt) || (up && sm_nxt == xr_nxt))
+                    up = !up;
         }
 
         if (x == 0 && y != 0)
