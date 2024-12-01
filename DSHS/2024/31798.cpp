@@ -11,7 +11,7 @@ int main() {
     cin >> a >> b >> c;
 
     if (a == 0 || b == 0)
-        cout << (int)(pow(c, 2) - a - b);
+        cout << ((int)pow(c, 2) - a - b);
     else
         cout << (int)sqrt(a + b);
 
