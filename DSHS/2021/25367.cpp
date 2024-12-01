@@ -11,17 +11,39 @@ int main() {
     long long x, y;
 
     cin >> q;
-    vector<long long> ans(q);
+    vector<long long> ans(q, 1);
 
     for (int i = 0; i < q; i++) {
         cin >> x >> y;
+        bool up = false;
 
-        for (long long k = 0; k <= x / 2; k++) {
-            if ((k ^ (x - k)) == y)
-                ans[i] += 2;
-            if (k == x - k)
-                ans[i] -= 1;
+        while (x > 0) {
+            int sm = (int)(x & 1);
+            int xr = (int)(y & 1);
+
+            if ((!up && sm != xr) || (up && sm == xr)) {
+                ans[i] = 0;
+                break;
+            }
+
+            if (xr == 1)
+                ans[i] *= 2;
+
+            x >>= 1;
+            y >>= 1;
+            int sm_nxt = (int)(x & 1);
+            int xr_nxt = (int)(y & 1);
+
+            if (!up)
+                if (xr == 0 && sm_nxt != xr_nxt)
+                    up = true;
+            if (up)
+                if (xr == 0 && sm_nxt == xr_nxt)
+                    up = false;
         }
+
+        if (x == 0 && y != 0)
+            ans[i] = 0;
     }
 
     cout << ans[0];
