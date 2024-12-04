@@ -35,14 +35,17 @@ int main() {
     vector<int> ans(t);
 
     for (int n = 120 - 1; n < 1000000; n++)
-        if (ruled(to_string(n)))
+        if (ruled(to_string(n + 1)))
             accu_sum[n] = accu_sum[n - 1] + 1;
         else
             accu_sum[n] = accu_sum[n - 1];
 
     for (int i = 0; i < t; i++) {
         cin >> a >> b;
-        ans[i] = accu_sum[b] - accu_sum[a - 1];
+        if (a < 120)
+            ans[i] = accu_sum[b - 1];
+        else
+            ans[i] = accu_sum[b - 1] - accu_sum[a - 2];
     }
 
     cout << ans[0];
