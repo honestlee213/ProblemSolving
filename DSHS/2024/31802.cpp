@@ -11,7 +11,7 @@ int main() {
     cin >> p;
     vector<long long> accu_sum(p + 1);
 
-    for (int i = 1; i <= p; i++) {
+    for (int i = 1; i < p + 1; i++) {
         cin >> accu_sum[i];
         accu_sum[i] += accu_sum[i - 1];
     }
